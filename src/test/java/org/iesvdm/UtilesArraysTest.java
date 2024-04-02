@@ -116,107 +116,130 @@ public class UtilesArraysTest {
 
     }
 
-    @Test void insertarEnPosicionTest3 ()
+
+    @Test void insertarOrdenadoTest ()
     {
 
-        /*given : */
+            /*given : */
+            int[] array = {1, 3, 5, 7, 9};
+            int elemento = 4;
+            int[] resultadoEsperado = {1, 3, 4, 5, 7, 9};
 
+            /*do : */
+            int[] resultadoActual = UtilesArrays.insertarOrdenado(array, elemento);
 
-        /*do : */
+            /*then : */
+            assertArrayEquals(resultadoEsperado, resultadoActual);
+        }
 
+        @Test void eliminarUltimoTest ()
+        {
 
-        /*then : */
+            /*given : */
+            int[] array = {1, 2, 3, 4};
+            int[] resultadoEsperado = {1, 2, 3};
 
+            /*do : */
+            int[] resultadoActual = UtilesArrays.eliminarUltimo(array);
+
+            /*then : */
+            assertArrayEquals(resultadoEsperado, resultadoActual);
 
     }
 
-    @Test void insertarEnPosicionTest4 ()
-    {
+        @Test void elimininarPrimero ()
+        {
 
-        /*given : */
+            /*given : */
+            int[] array = {1, 2, 3, 4};
+            int[] resultadoEsperado = {2, 3, 4};
 
+            /*given : */
+            int[] resultadoActual = UtilesArrays.eliminarPrimero(array);
 
-        /*do : */
+            /*given : */
+            assertArrayEquals(resultadoEsperado, resultadoActual);
+        }
 
+        @Test void testEliminarPosicion ()
+        {
 
-        /*then : */
-
-
-    }
-
-    @Test void insertarEnPosicionTest5 ()
-    {
-
-        /*given : */
-
-
-        /*do : */
-
-
-        /*then : */
+            int[] array = {1, 2, 3, 4};
+            int posicion = 2;
+            int[] resultadoEsperado = {1, 2, 4};
 
 
-    }
-
-    @Test void insertarEnPosicionTest6 ()
-    {
-
-        /*given : */
+            int[] resultadoActual = UtilesArrays.eliminarPosicion(array, posicion);
 
 
-        /*do : */
+            assertArrayEquals(resultadoEsperado, resultadoActual);
+        }
 
+        @Test void testEliminar() {
+            int[] array = {1, 2, 3, 4, 2};
+            int elemento = 2;
+            int[] resultadoEsperado = {1, 3, 4};
 
-        /*then : */
+            int[] resultadoActual = UtilesArrays.eliminar(array, elemento);
 
+            assertArrayEquals(resultadoEsperado, resultadoActual);
+        }
 
-    }
+        @Test void testOrdenar() {
+            int[] array = {4, 2, 1, 3};
+            int[] resultadoEsperado = {1, 2, 3, 4};
 
-    @Test void insertarEnPosicionTest7 ()
-    {
+            int[] resultadoActual = UtilesArrays.ordenar(array);
 
-        /*given : */
+            assertArrayEquals(resultadoEsperado, resultadoActual);
+        }
 
+        @Test void testDesordenar() {
+            int[] array = {1, 2, 3, 4, 5};
+            int[] copia = array.clone(); // Hacemos una copia para comparar después
 
-        /*do : */
+            UtilesArrays.desordenar(array);
 
+            // Comprobamos que el array se ha desordenado
+            boolean desordenado = false;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] != copia[i]) {
+                    desordenado = true;
+                    break;
+                }
+            }
 
-        /*then : */
+            assertEquals(true, desordenado);
+        }
 
+        @Test void testInvertir() {
+            int[] array = {1, 2, 3, 4};
+            int[] resultadoEsperado = {4, 3, 2, 1};
 
-    }
+            int[] resultadoActual = UtilesArrays.invertir(array);
 
-    @Test void insertarEnPosicionTest8 ()
-    {
+            assertArrayEquals(resultadoEsperado, resultadoActual);
+        }
 
-        /*given : */
+        @Test void testPartirPor() {
+            int[] array = {1, 2, 3, 4, 5};
+            int posicionInicio = 1;
+            int posicionCorte = 4;
+            int[] resultadoEsperado = {2, 3, 4};
 
+            int[] resultadoActual = UtilesArrays.partirPor(array, posicionInicio, posicionCorte);
 
-        /*do : */
+            assertArrayEquals(resultadoEsperado, resultadoActual);
+        }
 
+        @Test void testSonIguales() {
+            int[] array1 = {1, 2, 3};
+            int[] array2 = {1, 2, 3};
+            boolean resultadoEsperado = true;
 
-        /*then : */
+            boolean resultadoActual = UtilesArrays.sonIguales(array1, array2);
 
-
-    }
-
-    @Test void insertarEnPosicionTest9 ()
-    {
-
-        /*given : */
-
-
-        /*do : */
-
-
-        /*then : */
-
-
-    }
-
-
-
-
-
+            assertEquals(resultadoEsperado, resultadoActual);
+        }
 
 }
